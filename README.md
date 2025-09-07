@@ -106,4 +106,4 @@ This project provides an accessible **ML-powered tool** to automatically analyze
 This project is licensed under the **MIT License** – free to use, modify, and distribute.
 
 ---
-
+*one of the biggest backfall is that model is trined on small dataset.*
