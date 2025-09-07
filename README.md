@@ -1,4 +1,4 @@
-# 📰 ML-Based-NewsDetection
+# ML-Based-NewsDetection
 
 *Fake News Detection and Classification using NLP & Machine Learning.*  
 This project aims to detect and classify **fake news** using **Natural Language Processing (NLP)** and **Machine Learning** techniques.  
@@ -11,7 +11,7 @@ The trained model analyzes news articles and predicts whether they are **real or
 
 ---
 
-## ❓ Problem Statement
+## Problem Statement
 In today’s digital era, misinformation spreads rapidly and can have serious consequences. Distinguishing between **credible journalism** and **fake news** is increasingly difficult.  
 
 This project provides an accessible **ML-powered tool** to automatically analyze and classify news text, promoting **media literacy** and reducing the spread of false information.
@@ -19,7 +19,7 @@ This project provides an accessible **ML-powered tool** to automatically analyze
 ---
 
 
-## 🚀 Tech Stack & Core Techniques
+## Tech Stack & Core Techniques
 
 ### **Tools & Technologies**
 
@@ -32,7 +32,7 @@ This project provides an accessible **ML-powered tool** to automatically analyze
 
 ---
 
-## 🧠 Key Machine Learning Techniques
+## Key Machine Learning Techniques
 
 ### **Text Vectorization: TF-IDF**
 - Converts unstructured text into numerical format.
@@ -46,7 +46,7 @@ This project provides an accessible **ML-powered tool** to automatically analyze
 
 ---
 
-## 🎯 Learned Objectives (Skills Demonstrated)
+## Learned Objectives (Skills Demonstrated)
 
 ### **Machine Learning & NLP**
 - Data Analysis & Cleaning (Pandas)
@@ -71,7 +71,7 @@ This project provides an accessible **ML-powered tool** to automatically analyze
 
 ---
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 1. **Clone the repository**
    ```bash
@@ -101,7 +101,7 @@ This project provides an accessible **ML-powered tool** to automatically analyze
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the **MIT License** – free to use, modify, and distribute.
 
