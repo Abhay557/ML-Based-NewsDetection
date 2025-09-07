@@ -4,7 +4,8 @@
 This project aims to detect and classify **fake news** using **Natural Language Processing (NLP)** and **Machine Learning** techniques.  
 The trained model analyzes news articles and predicts whether they are **real or fake** based on their content.
 
-🔗 [**Live Demo:**](https://ml-based-newsdetection.onrender.com)  
+🔗 **Live Demo:** [Click Here](https://ml-based-newsdetection.onrender.com)  
+🔗 **Dataset:** [Click Here](https://www.kaggle.com/datasets/emineyetm/fake-news-detection-datasets)
 
 ![App Screenshot](/img.png)
 
