@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* A little bit of custom styling */
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="card p-4">
+            <h1 class="text-center mb-4">Fake News Detector</h1>
+            <p class="text-center text-muted mb-4">Enter the text of a news article below to classify it as Real or Fake.</p>
+
+            <form action="/predict" method="post">
+                <div class="mb-3">
+                    <textarea id="article-text" name="message" class="form-control" rows="12" placeholder="Paste the full article text here..." required></textarea>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Classify News</button>
+                </div>
+            </form>
+
+            <!-- The result will be displayed here -->
+            <div id="result-container" class="mt-4"></div>
+
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const textArea = document.getElementById('article-text');
+        const resultContainer = document.getElementById('result-container');
+        const submitButton = form.querySelector('button');
+
+        form.addEventListener('submit', (event) => {
+            // Stop the default form submission which causes the page to reload
+            event.preventDefault();
+
+            // Show a loading state on the button to give user feedback
+            submitButton.disabled = true;
+            submitButton.innerHTML = `
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Classifying...`;
+            
+            // Clear any previous result
+            resultContainer.innerHTML = '';
+
+            const formData = new FormData(form);
+
+            // Use the Fetch API to send the data to the server in the background
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json()) // The server returns JSON, so we parse it as JSON
+            .then(data => {
+                console.log(textArea);
+                console.log('Success:', data);
+                // 'data' is our parsed JSON object, e.g., {prediction_text: "..."}
+                if (data.prediction_text) {
+                    const resultText = data.prediction_text;
+                    // Change the result color based on the prediction
+                    const isRealNews = resultText.includes('Real');
+                    const alertClass = isRealNews ? 'alert-success' : 'alert-danger';
+                    
+                    // Display the new result
+                    resultContainer.innerHTML = `
+                        <div class="alert ${alertClass} text-center" role="alert">
+                            <h4 class="alert-heading">${resultText}</h4>
+                        </div>`;
+                } else {
+                    // Show an error if the JSON response contains an error message
+                    const errorMessage = data.error || 'Could not retrieve prediction. Please try again.';
+                    resultContainer.innerHTML = `
+                        <div class="alert alert-warning text-center" role="alert">
+                           ${errorMessage}
+                        </div>`;
+                    
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultContainer.innerHTML = `
+                        <div class="alert alert-danger text-center" role="alert">
+                            An error occurred while classifying. See console for details.
+                        </div>`;
+            })
+            .finally(() => {
+                // Restore the button to its original state
+                submitButton.disabled = false;
+                submitButton.textContent = 'Classify News';
+            });
+        });
+    </script>
+</body>
+</html>
+
